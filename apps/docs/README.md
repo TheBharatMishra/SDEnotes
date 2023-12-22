@@ -1,28 +1,72 @@
-## Getting Started
+# SDEnotes
 
-First, run the development server:
+Taking notes as learning about software development. Will keep adding to it.
 
-```bash
-yarn dev
-```
+## Serverless Computing
 
-Open [http://localhost:3001](http://localhost:3001) with your browser to see the result.
+requires zero configuration and maintainance from the developer
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Provides serverless functions. Gives rise to microservice architecture.
 
-To create [API routes](https://nextjs.org/docs/app/building-your-application/routing/router-handlers) add an `api/` directory to the `app/` directory with a `route.ts` file. For individual endpoints, create a subfolder in the `api` directory, like `api/hello/route.ts` would map to [http://localhost:3001/api/hello](http://localhost:3001/api/hello).
+These functions trigger different events on cloud
 
-## Learn More
+- https
+- firestore
+- pubsub
+- storage
+- analytics
 
-To learn more about Next.js, take a look at the following resources:
+Can be deployed using single command.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn/foundations/about-nextjs) - an interactive Next.js tutorial.
+## gRPC, tRPC, GraphQL or REST
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**REST** is an architecture. Similar to object oriented programming. Easier to build.
 
-## Deploy on Vercel
+Do not scale that well.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_source=github.com&utm_medium=referral&utm_campaign=turborepo-readme) from the creators of Next.js.
+Overfetching and Underfetching are also a problem.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Use REST when you need to move fast.
+
+**GraphQL** is a query language. Eliminates Overfetching and underfetching. Fetches Only the data we need. Daves bandwidth and prevents replication.
+
+Requires scehma definition to be right. Otherwise bugs may occur.
+
+GraphQL client libraries are pretty complex and requires boilerplate code.
+
+For example: Apollo cache management system does not maps with the browsers cache management system.
+
+### Use GraphQL when:
+
+- Complex Data Representation
+- Nested Routes
+- Objects with a lot of inheritance
+- Bandwidth is priority
+- on edge devices, smartphones
+
+### tRPC - typescript REMOTE PROCEDURAL CALL
+
+Helps to bridge frontend and backend.
+Mainly typescript projects.
+
+Controllers work without any error.
+
+Typescript is used for scehma definition.
+Data validation is good.
+
+It is common to use monorepo with tRPC.
+
+It runs on over HTTP2. Is lightweight compared to GraphQL(much lower bundle size).
+
+If you are using JS or TS on both client and server and it is better to use tRPC as compared to REST.
+
+### gRPC - google REMOTE PROCEDURAL CALL
+
+Works same as tRPC.
+Doesnt work witb JSON. Own format ProtoBuffer.
+
+Is faster compared to all the other ways.
+
+Good for microservices. And when they are written in different languages.
+
+RPC are a concept even before REST. gRPC is the most optimized implementation of it till now.
